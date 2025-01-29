@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: quarkus-app
+spec:
+  podMetricsEndpoints:
+    - bearerTokenSecret:
+        key: ''
+      path: /q/metrics
+      port: http
+  selector:
+    matchLabels:
+      backstage.io/kubernetes-id: quarkus-app
+      app.kubernetes.io/instance: my-quarkus-app    
